@@ -171,5 +171,6 @@ void PNGParser::parseImage(std::string inputFileName, std::string outputFileName
         for (size_t j = 1; j < width * bytesPerPixel + 1; j++) {
             out << int(rawData[i][j]) << " ";
         }
+        out << "\n";
     }
 };
