@@ -2,17 +2,24 @@
 
 A lightweight parser for extracting pixel data from a PNG file.
 
-## Limitations
-- Currently only DEFLATE decompression is implemented, with PNG parsing to follow.
+## Current Limitations
+- Only images with color type truecolor with alpha are supported
+- Interlacing is not supported
+- If an unsupported image is supplied, the behaviour of the application is undefined
+
 
 ## How to use
 First build using the following commands:
 ```
-g++ -c bitreader.cpp -o bitreader.o
-g++ -c inflater.cpp -o inflater.o
-g++ bitreader.o inflater.o main.cpp -o main.exe
+g++ -c BitReader.cpp -o Iitreader.o
+g++ -c Inflater.cpp -o Inflater.o
+g++ -c PNGParser.cpp -o PNGParser.o
+g++ BitReader.o Inflater.o PNGParser.o main.cpp -o main.exe
 ```
 
-Next, place an [LZ77-compressed file](https://datatracker.ietf.org/doc/html/draft-deutsch-deflate-spec-00) in the same directory as the application. Name the file **input.dat**.
+Next, place an PNG image in the same directory as the application.
 
-Finally, run the application. It will output the uncompressed data to a file named **output.dat**.
+Finally, run the application using the following commands (replace `<imageFile>` and `<outputFile>` with the names of the image file and the output file respectively):
+```
+.\main <imageFile> <outputFile>
+```
