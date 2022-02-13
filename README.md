@@ -25,6 +25,6 @@ Finally, run the application using the following commands (replace `<imageFile>`
 ```
 
 ## Output Format
-The first line of the output contains three integers: the image width, height, and bytes per pixel. The number of bytes per pixel is currently always 4 (since only truecolor with alpha images are supported).
+The first line of the output contains three space-separated integers: the image width, height, and bytes per pixel. The number of bytes per pixel is currently always 4 (since only truecolor with alpha images are supported).
 
-Each of the following lines represents a row of pixels. Each line contains $4 × width$ integers. Every 4 integers denote a pixel in the format `red green blue alpha`.
+Each of the following lines represents a row of pixels. Each line contains $4 × width$ space-separated integers. Every 4 integers denote a pixel in the format `red green blue alpha`.

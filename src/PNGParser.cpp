@@ -118,11 +118,18 @@ void PNGParser::parseImage(std::string inputFileName, std::string outputFileName
     }
 
     // The number of bytes per pixel
-    // Constant for now as only truecolor with alpha images are supported
-    constexpr int bytesPerPixel = 4;
+    int bytesPerPixel;
+    if (colorType == 2) {
+        bytesPerPixel = 3;
+    } else if (colorType == 6) {
+        bytesPerPixel = 4;
+    } else {
+        std::cerr << "Unsupported color type\n";
+        return;
+    }
 
     // Inflate the image data
-    std::vector<std::vector<uint8_t>> rawData = inflater.inflate(deflateStream, width, height);
+    std::vector<std::vector<uint8_t>> rawData = inflater.inflate(deflateStream, width, height, bytesPerPixel);
 
     // Apply reverse filtering to the data
     for (size_t row = 0; row < height; row++) {
