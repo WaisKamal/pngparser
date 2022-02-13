@@ -9,7 +9,8 @@
 // Converts little-endian to big-endian
 uint32_t PNGParser::toBigEndian(uint32_t num) {
     uint32_t result = 0;
-    while (num > 0) {
+    int numShifts = 4;
+    while (numShifts-- > 0) {
         result <<= 8;
         result |= num & 255;
         num >>= 8;
