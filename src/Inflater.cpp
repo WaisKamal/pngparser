@@ -8,11 +8,11 @@
 Inflater::Inflater() {}
 
 // Produces uncompressed data from a deflate stream
-std::vector<std::vector<uint8_t>> Inflater::inflate(std::list<uint8_t>& ls, uint64_t width, uint64_t height) {
+std::vector<std::vector<uint8_t>> Inflater::inflate(std::list<uint8_t>& ls, uint64_t width, uint64_t height, int bytesPerPixel) {
     BitReader in(ls);
 
     // Stores the result
-    std::vector<std::vector<uint8_t>> result(height, std::vector<uint8_t>(width * 4 + 1));
+    std::vector<std::vector<uint8_t>> result(height, std::vector<uint8_t>(width * bytesPerPixel + 1));
 
     // Last empty slot (row and column)
     uint64_t currentRow = 0, currentCol = 0;
@@ -73,19 +73,17 @@ std::vector<std::vector<uint8_t>> Inflater::inflate(std::list<uint8_t>& ls, uint
 
     // Build the literal/length Huffman tree
     std::vector<int> literalLengthCodeLengths(288);
-    for (int i = 0; i < 288; i++) {
-        if (i < 144) {
-            literalLengthCodeLengths[i] = 8;
-        }
-        else if (i < 256) {
-            literalLengthCodeLengths[i] = 9;
-        }
-        else if (i < 280) {
-            literalLengthCodeLengths[i] = 7;
-        }
-        else {
-            literalLengthCodeLengths[i] = 8;
-        }
+    for (int i = 0; i < 144; i++) {
+        literalLengthCodeLengths[i] = 8;
+    }
+    for (int i = 144; i < 256; i++) {
+        literalLengthCodeLengths[i] = 9;
+    }
+    for (int i = 256; i < 280; i++) {
+        literalLengthCodeLengths[i] = 7;
+    }
+    for (int i = 280; i < 288; i++) {
+        literalLengthCodeLengths[i] = 8;
     }
     HuffmanTree<uint16_t> literalLengthHft(0, 287, literalLengthCodeLengths);
 

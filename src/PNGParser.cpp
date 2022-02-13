@@ -9,7 +9,8 @@
 // Converts little-endian to big-endian
 uint32_t PNGParser::toBigEndian(uint32_t num) {
     uint32_t result = 0;
-    while (num > 0) {
+    int numShifts = 4;
+    while (numShifts-- > 0) {
         result <<= 8;
         result |= num & 255;
         num >>= 8;
@@ -118,11 +119,18 @@ void PNGParser::parseImage(std::string inputFileName, std::string outputFileName
     }
 
     // The number of bytes per pixel
-    // Constant for now as only truecolor with alpha images are supported
-    constexpr int bytesPerPixel = 4;
+    int bytesPerPixel;
+    if (colorType == 2) {
+        bytesPerPixel = 3;
+    } else if (colorType == 6) {
+        bytesPerPixel = 4;
+    } else {
+        std::cerr << "Unsupported color type\n";
+        return;
+    }
 
     // Inflate the image data
-    std::vector<std::vector<uint8_t>> rawData = inflater.inflate(deflateStream, width, height);
+    std::vector<std::vector<uint8_t>> rawData = inflater.inflate(deflateStream, width, height, bytesPerPixel);
 
     // Apply reverse filtering to the data
     for (size_t row = 0; row < height; row++) {

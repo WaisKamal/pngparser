@@ -12,7 +12,7 @@ public:
     Inflater();
 
     // Produces uncompressed data from a deflate stream
-    std::vector<std::vector<uint8_t>> inflate(std::list<uint8_t>& ls, uint64_t width, uint64_t height);
+    std::vector<std::vector<uint8_t>> inflate(std::list<uint8_t>& ls, uint64_t width, uint64_t height, int bytesPerPixel);
 
 private:
     // The literal/length and distance alphabet tables
