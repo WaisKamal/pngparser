@@ -5,6 +5,7 @@ A lightweight parser for extracting pixel data from a PNG file.
 ## Current Limitations
 - Only images with color types truecolor and truecolor with alpha are supported
 - Interlacing is not supported
+- Verification on ADLER32 checksum and cyclic redundancy code (CRC) is not yet implemented
 - If an unsupported image is supplied, the behaviour of the application is undefined
 
 
