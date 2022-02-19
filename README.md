@@ -18,7 +18,7 @@ g++ -c PNGParser.cpp -o PNGParser.o
 g++ BitReader.o Inflater.o PNGParser.o main.cpp -o main.exe
 ```
 
-Next, place an PNG image in the same directory as the application.
+Next, place a PNG image in the same directory as the application.
 
 Finally, run the application using the following commands (replace `<imageFile>` and `<outputFile>` with the names of the image file and the output file respectively):
 ```
