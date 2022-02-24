@@ -28,7 +28,7 @@ Finally, run the application using the following commands (replace `<imageFile>`
 ## Output Format
 The first line of the output contains three space-separated integers: the image `width`, `height`, and number of values per pixel.
 
-Each of the following $height$ lines represents a row of pixels. Each line contains `width × values_per_pixel` space-separated integers. The pixels are denoted as follows:
+Each of the following `height` lines represents a row of pixels. Each line contains `width × values_per_pixel` space-separated integers. The pixels are denoted as follows:
 
 - for truecolor images, each pixel is represented by 3 space-separated integers denoting `red`, `green`, and `blue` respectively
 - for truecolor images with an alpha channel, each pixel is represented by 4 space-separated integers denoting `red`, `green`, `blue`, and `alpha` respectively
