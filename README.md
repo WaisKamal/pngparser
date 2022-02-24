@@ -1,6 +1,6 @@
 # pngparser
 
-A lightweight parser for extracting pixel data from a PNG file.
+A lightweight parser for extracting pixel data from a PNG file. Written completely from scratch.
 
 ## Current Limitations
 - Only images with color types truecolor and truecolor with alpha are supported
