@@ -91,6 +91,7 @@ public:
             if (currentNode->right) {
                 q.push(currentNode->right);
             }
+            delete currentNode;
         }
     }
 };
