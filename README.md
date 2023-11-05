@@ -10,7 +10,11 @@ A lightweight parser for extracting pixel data from a PNG file. Written complete
 
 
 ## How to use
+Make sure you have GCC version 8.0 or newer installed.
+
 First build using the following commands:
+
+**Windows**
 ```
 g++ -c BitReader.cpp -o Bitreader.o
 g++ -c Inflater.cpp -o Inflater.o
@@ -18,9 +22,15 @@ g++ -c PNGParser.cpp -o PNGParser.o
 g++ BitReader.o Inflater.o PNGParser.o main.cpp -o main.exe
 ```
 
-Next, place a PNG image in the same directory as the application.
+**Linux/MacOS**
+```
+g++ -c BitReader.cpp -o Bitreader.o
+g++ -c Inflater.cpp -o Inflater.o
+g++ -c PNGParser.cpp -o PNGParser.o
+g++ BitReader.o Inflater.o PNGParser.o main.cpp -o main
+```
 
-Finally, run the application using the following commands (replace `<imageFile>` and `<outputFile>` with the names of the image file and the output file respectively):
+Then run the application using the following command (replace `<imageFile>` and `<outputFile>` with the paths to the image file and the output file respectively):
 ```
 .\main <imageFile> <outputFile>
 ```
