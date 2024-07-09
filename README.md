@@ -16,7 +16,7 @@ First build using the following commands:
 
 **Windows**
 ```
-g++ -c BitReader.cpp -o Bitreader.o
+g++ -c BitReader.cpp -o BitReader.o
 g++ -c Inflater.cpp -o Inflater.o
 g++ -c PNGParser.cpp -o PNGParser.o
 g++ BitReader.o Inflater.o PNGParser.o main.cpp -o main.exe
@@ -24,7 +24,7 @@ g++ BitReader.o Inflater.o PNGParser.o main.cpp -o main.exe
 
 **Linux/MacOS**
 ```
-g++ -c BitReader.cpp -o Bitreader.o
+g++ -c BitReader.cpp -o BitReader.o
 g++ -c Inflater.cpp -o Inflater.o
 g++ -c PNGParser.cpp -o PNGParser.o
 g++ BitReader.o Inflater.o PNGParser.o main.cpp -o main
